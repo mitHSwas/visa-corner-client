@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { logOut, user } = useContext(AuthContext);
+    const handleSignOut = () => {
+        logOut()
+            .then()
+            .catch(err => console.err(err))
+    }
     return (
         <div className="navbar bg-base-100 container">
             <div className="navbar-start">
@@ -11,9 +18,17 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li className='ml-5'><Link to="/services">Services</Link></li>
-                        <li className='ml-5'><Link to="/login">Login</Link></li>
-                        <li className='ml-5'><a>Item 3</a></li>
-                        <li className='ml-5'><a>Item 4</a></li>
+                        <li className='ml-5'><Link to="/blogs">Blogs</Link></li>
+                        {
+                            user?.email ?
+                                <>
+                                    <li className='ml-5'><Link to="/myReview">My Review</Link></li>
+                                    <li className='ml-5'><Link to="/addService">Add Service</Link></li>
+                                    <li className='ml-5'><button onClick={handleSignOut}>logout</button></li>
+                                </>
+                                :
+                                <li className='ml-5'><Link to="/login">Login</Link></li>
+                        }
                     </ul>
                 </div>
                 <Link to="/" className="btn btn-ghost normal-case text-3xl">Viva-visa</Link>
@@ -21,9 +36,17 @@ const Header = () => {
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li className='ml-5'><Link to="/services">Services</Link></li>
-                    <li className='ml-5'><Link to="/login">Login</Link></li>
-                    <li className='ml-5'><a>Item 3</a></li>
-                    <li className='ml-5'><a>Item 4</a></li>
+                    <li className='ml-5'><Link to="/blogs">Blogs</Link></li>
+                    {
+                        user?.email ?
+                            <>
+                                <li className='ml-5'><Link to="/myReview">My Review</Link></li>
+                                <li className='ml-5'><Link to="/addService">Add Service</Link></li>
+                                <li className='ml-5'><button onClick={handleSignOut}>logout</button></li>
+                            </>
+                            :
+                            <li className='ml-5'><Link to="/login">Login</Link></li>
+                    }
                 </ul>
             </div>
         </div>
