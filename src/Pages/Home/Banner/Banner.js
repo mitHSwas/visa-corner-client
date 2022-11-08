@@ -11,6 +11,8 @@ const Banner = () => {
                     <div className="absolute justify-start transform -translate-y-1/2 left-10 top-1/4">
                         <h1 className="text-5xl text-white font-bold w-5/6 my-8">Viva-Visa is Global Immigration Consultants Ltd.</h1>
                         <p className="lg:text-xl text-white font-semibold w-3/5">You are presumed to know the law or procedures system, but it is likely you will not be aware of every factor that may affect your case.</p>
+                        <br />
+                        <button className="btn btn-outline btn-warning">Contract Us</button>
                     </div>
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
 
@@ -22,7 +24,9 @@ const Banner = () => {
                     <img src={banner1} className="w-full h-4/5 rounded-lg" alt="" />
                     <div className="absolute justify-start transform -translate-y-1/2 left-10 top-1/4">
                         <h1 className="text-5xl text-white font-bold w-5/6 my-8">Consultancy that empowers you...</h1>
-                        <p className="lg:text-xl text-white font-semibold w-3/5">Viva-visa consultancy services have started its operation in 1986. </p>
+                        <p className="lg:text-xl text-white font-semibold w-3/5">Viva-visa consultancy services have started its operation in 1999. </p>
+                        <br />
+                        <button className="btn btn-outline btn-warning">Our Solutions</button>
                     </div>
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide3" className="btn btn-circle h-2/4">❮</a>
@@ -34,6 +38,8 @@ const Banner = () => {
                     <div className="absolute justify-start transform -translate-y-1/2 left-10 top-1/4">
                         <h1 className="text-5xl text-white font-bold w-4/6 my-8">Emergence of New Ideas.</h1>
                         <p className="lg:text-xl text-white font-semibold w-3/5">At present, out of five countries of most happy, affluent & economically solvent country around the world, Australia & Canada are main two.</p>
+                        <br />
+                        <button className="btn btn-outline btn-warning">Read More</button>
                     </div>
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide1" className="btn btn-circle h-2/4">❮</a>
