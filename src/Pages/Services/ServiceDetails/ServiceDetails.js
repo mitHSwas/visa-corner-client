@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
@@ -45,12 +45,11 @@ const ServiceDetails = () => {
             })
     }
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/review/${_id}`)
+    const handleAddReview = (id) => {
+        fetch(`http://localhost:5000/review/${id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
-    }, [_id])
-
+    }
     return (
         <div>
             <div className="card lg:card-side bg-base-100 shadow-xl my-8">
@@ -83,7 +82,7 @@ const ServiceDetails = () => {
                                     </label>
                                     <input type="number" name="ratings" placeholder="ratings" className="input input-bordered w-1/5" required />
                                 </div>
-                                <input className="btn btn-primary mt-6 w-1/5" type="submit" value="Add Review" />
+                                <input onClick={() => handleAddReview(_id)} className="btn btn-primary mt-6 w-1/5" type="submit" value="Add Review" />
                             </form>
                         </div>
                         :
