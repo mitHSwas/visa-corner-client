@@ -9,8 +9,6 @@ const ServiceDetails = () => {
     const { _id, name, picture, price, rating, description } = useLoaderData();
     const [reviews, setReviews] = useState([]);
 
-    console.log(reviews.length);
-
     const handleReview = event => {
         event.preventDefault();
         const form = event.target;
@@ -24,9 +22,11 @@ const ServiceDetails = () => {
         }
         const reviewInfo = {
             serviceId: _id,
+            serviceName: name,
             review: review,
             ratings: ratings,
-            name: user?.displayName || "Someone",
+            userName: user?.displayName || "Someone",
+            email: user?.email,
             img: user?.photoURL || "https://i.ibb.co/GV7WmGT/download.jpg",
         }
         fetch(`http://localhost:5000/review/${_id}`, {
@@ -89,7 +89,7 @@ const ServiceDetails = () => {
                         :
                         <p className='text-xl my-5'>Please <Link className='text-orange-600 font-bold' to="/login">LOGIN</Link> first to add your review.</p>
                 }
-                <div>
+                <div className='container'>
                     <div>
                         <tr className='flex w-full'>
                             <th className='w-1/6'>Profile</th>
