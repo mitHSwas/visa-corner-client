@@ -3,8 +3,8 @@ import Login from "../../Login/Login/Login";
 import Register from "../../Login/Register/Register";
 import Main from "../../loyout/Main/Main";
 import Home from "../../Pages/Home/Home/Home";
-import ServiceDetails from "../../Pages/Services/ServiceDetails";
-import Services from "../../Pages/Services/Services";
+import ServiceDetails from "../../Pages/Services/ServiceDetails/ServiceDetails";
+import Services from "../../Pages/Services/Services/Services";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/service/:id',
-                element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
+                element: <ServiceDetails></ServiceDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/service/${params.id}`)
             },
             {

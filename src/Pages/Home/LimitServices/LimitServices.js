@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import ServiceCard from '../../Services/ServiceCard';
+import ServiceCard from '../../Services/ServiceCard/ServiceCard';
 
 const LimitServices = () => {
     const limitService = useLoaderData();
