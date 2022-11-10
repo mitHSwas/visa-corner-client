@@ -15,8 +15,22 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                navigate(from, { replace: true });
                 console.log(user);
+                const currentUser = {
+                    email: user.email
+                }
+                fetch('https://viva-visa-server-mithswas.vercel.app/jwt', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem("genius-token", data.token);
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(err => console.error(err));
     }
@@ -31,8 +45,23 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 form.reset();
-                navigate(from, { replace: true });
                 console.log(user)
+
+                const currentUser = {
+                    email: user.email
+                }
+                fetch('https://viva-visa-server-mithswas.vercel.app/jwt', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem("genius-token", data.token);
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(err => console.error(err))
     }
