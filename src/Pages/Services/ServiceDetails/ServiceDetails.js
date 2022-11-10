@@ -29,7 +29,7 @@ const ServiceDetails = () => {
             email: user?.email,
             img: user?.photoURL || "https://i.ibb.co/GV7WmGT/download.jpg",
         }
-        fetch(`http://localhost:5000/review/${_id}`, {
+        fetch(`https://viva-visa-server-mithswas.vercel.app/review/${_id}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -46,7 +46,7 @@ const ServiceDetails = () => {
     }
 
     const handleAddReview = (id) => {
-        fetch(`http://localhost:5000/review/${id}`)
+        fetch(`https://viva-visa-server-mithswas.vercel.app/review/${id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }

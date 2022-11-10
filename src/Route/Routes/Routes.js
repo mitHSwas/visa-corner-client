@@ -17,17 +17,17 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch("http://localhost:5000/")
+                loader: () => fetch("https://viva-visa-server-mithswas.vercel.app/")
             },
             {
                 path: '/services',
                 element: <Services></Services>,
-                loader: () => fetch("http://localhost:5000/services")
+                loader: () => fetch("https://viva-visa-server-mithswas.vercel.app/services")
             },
             {
                 path: '/service/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/service/${params.id}`)
+                loader: ({ params }) => fetch(`https://viva-visa-server-mithswas.vercel.app/service/${params.id}`)
             },
             {
                 path: '/login',

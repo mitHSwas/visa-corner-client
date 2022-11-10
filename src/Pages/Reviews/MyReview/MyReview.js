@@ -8,14 +8,14 @@ const MyReview = () => {
     const [myReviews, setMyReviews] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:5000/reviews?email=${user.email}`;
+        const url = `https://viva-visa-server-mithswas.vercel.app/reviews?email=${user.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setMyReviews(data));
     }, [user.email])
 
     const handleUpdate = (_id) => {
-        // fetch(`http://localhost:5000/review/${_id}`, {
+        // fetch(`https://viva-visa-server-mithswas.vercel.app/review/${_id}`, {
         //     method: "",
         // })
         //     .then(res => res.json())
@@ -31,7 +31,7 @@ const MyReview = () => {
     const handleDelete = (_id) => {
         const agree = window.confirm("Are your sure you want to delete this review?");
         if (agree) {
-            fetch(`http://localhost:5000/review/${_id}`, {
+            fetch(`https://viva-visa-server-mithswas.vercel.app/review/${_id}`, {
                 method: "DELETE",
             })
                 .then(res => res.json())

@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyA2bFN5NnUmt2q1cnUVCPXRDyDtVR6nZU0",
-    authDomain: "viva-visa.firebaseapp.com",
-    projectId: "viva-visa",
-    storageBucket: "viva-visa.appspot.com",
-    messagingSenderId: "847858612939",
-    appId: "1:847858612939:web:6df314e523f97bb8da794e"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
