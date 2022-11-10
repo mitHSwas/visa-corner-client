@@ -8,11 +8,11 @@ const MyReview = () => {
     const [myReviews, setMyReviews] = useState([]);
 
     useEffect(() => {
-        const url = `https://viva-visa-server-mithswas.vercel.app/reviews?email=${user.email}`;
+        const url = `https://viva-visa-server-mithswas.vercel.app/reviews?email=${user?.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setMyReviews(data));
-    }, [user.email])
+    }, [user?.email])
 
     const handleUpdate = (_id) => {
         // fetch(`https://viva-visa-server-mithswas.vercel.app/review/${_id}`, {

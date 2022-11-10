@@ -1,14 +1,25 @@
 import React, { useContext } from 'react';
+import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SignInImg from '../../assets/images/Login/login.png';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { signInUser } = useContext(AuthContext);
+    const { signInUser, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                navigate(from, { replace: true });
+                console.log(user);
+            })
+            .catch(err => console.error(err));
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -51,6 +62,13 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='text-center'>New in Viva-visa? <Link className='text-orange-600 font-bold' to="/register">Sign Up</Link> </p>
+                    <div className='mx-auto'>
+                        <h3 className='my-3'>Or continue with</h3>
+                        <button onClick={handleGoogleSignIn} className="btn btn-outline btn-ghost  ml-5">
+                            <FcGoogle className='text-4xl cursor-pointer'></FcGoogle>
+                        </button>
+
+                    </div>
                 </div>
             </div>
         </div>
