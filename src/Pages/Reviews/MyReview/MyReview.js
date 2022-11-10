@@ -16,17 +16,7 @@ const MyReview = () => {
     }, [user?.email])
 
     const handleUpdate = (_id) => {
-        // fetch(`https://viva-visa-server-mithswas.vercel.app/review/${_id}`, {
-        //     method: "",
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.deletedCount > 0) {
-        //             toast.success("This review deleted successfully!");
-        //             const remaining = myReviews.filter(review => review._id !== _id);
-        //             setMyReviews(remaining);
-        //         }
-        //     })
+
     }
 
     const handleDelete = (_id) => {
