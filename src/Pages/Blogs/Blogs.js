@@ -1,8 +1,11 @@
 import React from 'react';
-
+import { Helmet } from 'react-helmet';
 const Blogs = () => {
     return (
         <div>
+            <Helmet>
+                <title>Viva-visa - blogs</title>
+            </Helmet>
             <div>
                 <h1 className="font-semibold text-3xl my-8">Question 1: What are the difference between SQL and NoSQL?</h1>
                 <div className='flex w-full lg:flex-row sm:flex-col'>

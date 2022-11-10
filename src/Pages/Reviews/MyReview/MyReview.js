@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import ReviewTable from '../ReviewTable/ReviewTable';
+import { Helmet } from 'react-helmet';
 
 const MyReview = () => {
     const { user } = useContext(AuthContext)
@@ -47,20 +48,23 @@ const MyReview = () => {
 
     return (
         <div className='my-10'>
-            <thead className="table w-full">
+            <Helmet>
+                <title>Viva-visa - myReview</title>
+            </Helmet>
+            <div className="table w-full">
                 <tr>
                     <th className='w-1/6'>Service Name</th>
                     <th className='w-4/6 text-center'>My Reviews</th>
                     <th className='w-1/6'>Action</th>
                 </tr>
-            </thead>
+            </div>
             {
                 myReviews.length < 1 ?
                     <h2 className='text-4xl text-center text-orange-400 my-7'>No review added still now.</h2>
                     :
                     <div className='container'>
                         {
-                            myReviews.map(myReview => <ReviewTable
+                            myReviews?.map(myReview => <ReviewTable
                                 key={myReview._id}
                                 myReview={myReview}
                                 handleDelete={handleDelete}

@@ -3,6 +3,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SignInImg from '../../assets/images/Login/login.png';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     const { signInUser, googleSignIn } = useContext(AuthContext);
@@ -16,21 +17,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                const currentUser = {
-                    email: user.email
-                }
-                fetch('https://viva-visa-server-mithswas.vercel.app/jwt', {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        localStorage.setItem("genius-token", data.token);
-                        navigate(from, { replace: true });
-                    })
+                navigate(from, { replace: true });
             })
             .catch(err => console.error(err));
     }
@@ -45,28 +32,16 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 form.reset();
+                navigate(from, { replace: true });
                 console.log(user)
-
-                const currentUser = {
-                    email: user.email
-                }
-                fetch('https://viva-visa-server-mithswas.vercel.app/jwt', {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        localStorage.setItem("genius-token", data.token);
-                        navigate(from, { replace: true });
-                    })
             })
             .catch(err => console.error(err))
     }
     return (
         <div className="hero my-20">
+            <Helmet>
+                <title>Viva-visa - login</title>
+            </Helmet>
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <img src={SignInImg} className="w-full" alt="" />

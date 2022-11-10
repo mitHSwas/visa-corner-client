@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/Login/signup.png'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
     const { createUser, googleSignIn, profileAdded } = useContext(AuthContext)
@@ -11,22 +12,8 @@ const Register = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
+                navigate("/")
                 console.log(user);
-                const currentUser = {
-                    email: user.email
-                }
-                fetch('https://viva-visa-server-mithswas.vercel.app/jwt', {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        localStorage.setItem("genius-token", data.token);
-                        navigate("/")
-                    })
             })
             .catch(err => console.error(err));
     }
@@ -44,21 +31,8 @@ const Register = () => {
                 const user = result.user;
                 profileUpdate(name, photoURL)
                 form.reset();
-                const currentUser = {
-                    email: user.email
-                }
-                fetch('https://viva-visa-server-mithswas.vercel.app/jwt', {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        localStorage.setItem("genius-token", data.token);
-                        navigate("/");
-                    })
+                navigate("/");
+                console.log(user)
             })
             .catch(error => console.error(error))
     }
@@ -73,6 +47,9 @@ const Register = () => {
 
     return (
         <div className="hero my-20">
+            <Helmet>
+                <title>Viva-visa - Register</title>
+            </Helmet>
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <img src={img} className="w-full" alt="" />
