@@ -51,11 +51,11 @@ const ServiceDetails = () => {
             .then(data => setReviews(data))
     }
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto px-5'>
             <div className="card lg:card-side bg-base-100 shadow-xl my-8">
                 <figure><img src={picture} alt="Album" /></figure>
-                <div className="card-body mr-6">
-                    <h2 className="card-title text-4xl">{name}</h2>
+                <div className="card-body">
+                    <h2 className="card-title lg:text-4xl md:text-3xl text-2xl">{name}</h2>
                     <p>{description}</p>
                     <div className="flex justify-between">
                         <span>Price: ${price}</span>
@@ -64,13 +64,13 @@ const ServiceDetails = () => {
                 </div>
             </div>
             <div>
-                <h2 className='text-4xl font-semibold'>Reviews:</h2>
+                <h2 className='lg:text-4xl md:text-3xl text-2xl font-semibold'>Reviews:</h2>
                 {
                     user?.email ?
                         <div className='my-8'>
                             <p className='text-lg'>Add Your Review:</p>
                             <form onSubmit={handleReview} className="card-body">
-                                <div className="form-control w-2/3">
+                                <div className="form-control lg:w-2/3 w-full">
                                     <label className="label">
                                         <span className="label-text">Review</span>
                                     </label>
@@ -80,15 +80,15 @@ const ServiceDetails = () => {
                                     <label className="label">
                                         <span className="label-text">Ratings(Out of 5)</span>
                                     </label>
-                                    <input type="number" name="ratings" placeholder="ratings" className="input input-bordered w-1/5" required />
+                                    <input type="number" name="ratings" placeholder="ratings" className="input input-bordered w-3/5 lg:w-1/5" required />
                                 </div>
-                                <input onClick={() => handleAddReview(_id)} className="btn btn-primary mt-6 w-1/5" type="submit" value="Add Review" />
+                                <input onClick={() => handleAddReview(_id)} className="btn btn-primary mt-6 w-2/5 lg:w-1/5" type="submit" value="Add Review" />
                             </form>
                         </div>
                         :
                         <p className='text-xl my-5'>Please <Link className='text-orange-600 font-bold' to="/login">LOGIN</Link> first to add your review.</p>
                 }
-                <div className='container'>
+                <div className='container mx-auto'>
                     <div>
                         <tr className='flex w-full'>
                             <th className='w-1/6'>Profile</th>
@@ -98,9 +98,9 @@ const ServiceDetails = () => {
                     </div>
                     {
                         reviews.length < 1 ?
-                            <h2 className='text-4xl text-center text-orange-400 my-7'>No review added still now.</h2>
+                            <h2 className='lg:text-4xl md:text-3xl text-2xl text-center text-orange-400 my-7'>No review added still now.</h2>
                             :
-                            <div>
+                            <div >
                                 {
                                     reviews?.map(review => <Reviews
                                         key={review._id}

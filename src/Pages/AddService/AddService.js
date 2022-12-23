@@ -37,12 +37,12 @@ const AddService = () => {
     }
 
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto px-5'>
             <Helmet>
                 <title>Viva-visa - addService</title>
             </Helmet>
-            <h2 className='text-4xl text-center my-5 font-semibold'>New service is coming..</h2>
-            <form onSubmit={handleSubmit} className='grid grid-cols-1 lg:grid-cols-2 gap-8 my-10'>
+            <h2 className='lg:text-5xl md:text-4xl text-3xl text-center my-5 font-semibold'>Add A New Service</h2>
+            <form onSubmit={handleSubmit} className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 lg:gap-8 md:gap-6 gap-4 my-10'>
                 <div>
                     <label className="label">
                         <span className="label-text">Service Name</span>
@@ -73,7 +73,7 @@ const AddService = () => {
                     </label>
                     <textarea name="description" className="textarea textarea-bordered h-24 w-full" placeholder="Write details about your service.." required />
                 </div>
-                <div className='lg:mt-16'>
+                <div className='lg:mt-16 md:mt-14'>
                     <input type="submit" value="Add Service" className="btn btn-primary" />
                 </div>
             </form>

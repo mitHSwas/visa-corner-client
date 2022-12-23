@@ -10,7 +10,7 @@ const Header = () => {
             .catch(err => console.err(err))
     }
     return (
-        <div className="navbar bg-base-100 container mx-auto">
+        <div className="navbar bg-slate-50 container mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

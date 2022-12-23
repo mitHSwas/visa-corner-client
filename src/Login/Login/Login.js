@@ -42,7 +42,7 @@ const Login = () => {
             <Helmet>
                 <title>Viva-visa - login</title>
             </Helmet>
-            <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
+            <div className="hero-content grid gap-10 md:grid-cols-2 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <img src={SignInImg} className="w-full" alt="" />
                 </div>
