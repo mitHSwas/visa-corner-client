@@ -41,13 +41,11 @@ const MyReview = () => {
             <Helmet>
                 <title>Viva-visa - myReview</title>
             </Helmet>
-            <div className="table w-full">
-                <tr>
-                    <th className='w-1/6'>Service Name</th>
-                    <th className='w-4/6 text-center'>My Reviews</th>
-                    <th className='w-1/6'>Action</th>
-                </tr>
-            </div>
+            <tr className="table w-full">
+                <th className='w-1/6'>Service Name</th>
+                <th className='w-4/6 text-center'>My Reviews</th>
+                <th className='w-1/6'>Action</th>
+            </tr>
             {
                 myReviews.length < 1 ?
                     <h2 className='text-4xl text-center text-orange-400 my-7'>No review added still now.</h2>

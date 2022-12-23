@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Reviews from '../Reviews/Reviews';
 
@@ -8,6 +8,7 @@ const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
     const { _id, name, picture, price, rating, description } = useLoaderData();
     const [reviews, setReviews] = useState([]);
+    const current = useLocation()
 
     const handleReview = event => {
         event.preventDefault();
@@ -86,7 +87,7 @@ const ServiceDetails = () => {
                             </form>
                         </div>
                         :
-                        <p className='text-xl my-5'>Please <Link className='text-orange-600 font-bold' to="/login">LOGIN</Link> first to add your review.</p>
+                        <p className='text-xl my-5'>Please <Link className='text-orange-600 font-bold' state={{ currentLocation: current }} to="/login">LOGIN</Link> first to add your review.</p>
                 }
                 <div className='container mx-auto'>
                     <div>
