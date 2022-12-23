@@ -37,7 +37,7 @@ const AddService = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='container mx-auto'>
             <Helmet>
                 <title>Viva-visa - addService</title>
             </Helmet>

@@ -6,12 +6,12 @@ import { Helmet } from 'react-helmet';
 const Services = () => {
     const services = useLoaderData();
     return (
-        <div className=''>
+        <div className='container mx-auto'>
             <Helmet>
                 <title>Viva-visa - services</title>
             </Helmet>
             <h1 className='text-center text-4xl font-bold my-8'>Choose your need what you are looking for!</h1>
-            <div className='grid lg:grid-cols-3 gap-7 my-16'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-7 my-16'>
                 {
                     services.map(service => <ServiceCard
                         key={service._id}

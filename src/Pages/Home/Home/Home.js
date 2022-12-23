@@ -8,9 +8,9 @@ import { Helmet } from 'react-helmet';
 const Home = () => {
 
     return (
-        <div>
+        <div className='container mx-auto px-5'>
             <Helmet>
-                <title>Viva-visa - home</title>
+                <title>Visa Corner - home</title>
             </Helmet>
             <Banner></Banner>
             <About></About>

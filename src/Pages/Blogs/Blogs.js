@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 const Blogs = () => {
     return (
-        <div>
+        <div className='container mx-auto'>
             <Helmet>
                 <title>Viva-visa - blogs</title>
             </Helmet>

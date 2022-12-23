@@ -37,7 +37,7 @@ const MyReview = () => {
     }
 
     return (
-        <div className='my-10'>
+        <div className='container mx-auto my-10'>
             <Helmet>
                 <title>Viva-visa - myReview</title>
             </Helmet>

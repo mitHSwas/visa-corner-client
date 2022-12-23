@@ -51,7 +51,7 @@ const ServiceDetails = () => {
             .then(data => setReviews(data))
     }
     return (
-        <div>
+        <div className='container mx-auto'>
             <div className="card lg:card-side bg-base-100 shadow-xl my-8">
                 <figure><img src={picture} alt="Album" /></figure>
                 <div className="card-body mr-6">
