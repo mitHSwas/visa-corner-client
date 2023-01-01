@@ -13,7 +13,7 @@ const ServiceCard = ({ service }) => {
             </PhotoProvider>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
-                <p>{description.slice(0, 100)}</p>
+                <p>{description.slice(0, 100)}...</p>
                 <div className="card-actions justify-between">
                     <div>
                         <p className='text-base'>Rating: {rating}/5</p>

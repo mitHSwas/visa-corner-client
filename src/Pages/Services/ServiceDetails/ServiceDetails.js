@@ -1,14 +1,23 @@
 import React, { useContext, useState } from 'react';
+import { useEffect } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useLoaderData, useLocation } from 'react-router-dom';
+import { Link, useLoaderData, useLocation, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Reviews from '../Reviews/Reviews';
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
-    const { _id, name, picture, price, rating, description } = useLoaderData();
+    const { details } = useLoaderData();
+    const { _id, name, picture, price, rating, description } = details;
     const [reviews, setReviews] = useState([]);
     const current = useLocation()
+    const params = useParams();
+
+    useEffect(() => {
+        fetch(`https://viva-visa-server-mithswas.vercel.app/service/${params.id}`)
+            .then(res => res.json())
+            .then(data => setReviews(data.review))
+    }, [params.id])
 
     const handleReview = event => {
         event.preventDefault();
@@ -18,8 +27,8 @@ const ServiceDetails = () => {
         if (review.length < 15) {
             return toast.error("Your review minimum 15 character length.")
         }
-        if (ratings > 5 && ratings < 0) {
-            return toast.error("Your rating should be more than 0 and less than or equals to 5.")
+        if (!/^[0-5](\.[0-5][0-5]?)?$/.test(ratings)) {
+            return toast.error("Your service review rating should be 0 to 5.")
         }
         const reviewInfo = {
             serviceId: _id,
@@ -41,7 +50,7 @@ const ServiceDetails = () => {
             .then(result => {
                 if (result.acknowledged) {
                     form.reset();
-                    toast.success('Your Review Added Successfully!')
+                    toast.success('Your Review Added Successfully Please reload to watch!')
                 }
             })
     }

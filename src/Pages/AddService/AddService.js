@@ -1,9 +1,10 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 
 const AddService = () => {
-
+    const navigate = useNavigate()
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -12,6 +13,13 @@ const AddService = () => {
         const photoURL = form.photoURL.value;
         const ratings = form.ratings.value;
         const description = form.description.value;
+
+        if (!/^[0-5](\.[0-5][0-5]?)?$/.test(ratings)) {
+            return toast.error("Your service review rating should be 0 to 5.")
+        }
+        if (description.length < 40) {
+            return toast.error("Your review minimum 40 character length.")
+        }
 
         const serviceInfo = {
             name: name,
@@ -32,6 +40,7 @@ const AddService = () => {
                 if (data.acknowledged) {
                     form.reset();
                     toast.success("New service added successfully!");
+                    navigate("/services")
                 }
             })
     }

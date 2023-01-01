@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReviewTable = ({ myReview, handleDelete, handleUpdate }) => {
+const ReviewTable = ({ myReview, handleDelete, setUpdate }) => {
     const { serviceName, review, _id, ratings } = myReview;
 
     return (
@@ -11,7 +11,7 @@ const ReviewTable = ({ myReview, handleDelete, handleUpdate }) => {
                         <td style={{ whiteSpace: "normal" }} className='w-full text-center lg:w-1/6 md:w-1/6'>{serviceName}(rating: {ratings})</td>
                         <td style={{ whiteSpace: "normal" }} className='w-full lg:w-4/6 md:w-4/6  border-x-2'>{review}</td>
                         <td className='flex gap-2 w-full lg:w-1/6 md:w-1/6 lg:flex-row md:flex-col'>
-                            <button onClick={() => handleUpdate(_id)} className="btn btn-outline btn-warning mb-2">Update</button>
+                            <label htmlFor="review-modal" onClick={() => setUpdate(myReview)} className="btn btn-outline btn-warning mb-2">Update</label>
                             <button onClick={() => handleDelete(_id)} className="btn btn-outline btn-error">Delete</button>
                         </td>
                     </tr>

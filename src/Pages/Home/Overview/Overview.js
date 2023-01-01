@@ -4,7 +4,7 @@ import { BsPersonCircle } from "react-icons/bs";
 
 const Overview = () => {
     return (
-        <div className='flex w-full lg:flex-row md:flex-row flex-col bg-slate-100 my-20 rounded-lg'>
+        <div className='flex w-full lg:flex-row md:flex-row flex-col bg-slate-50 my-20 rounded-lg'>
             <div className='text-center lg:w-1/5 w-full my-12 mx-auto'>
                 <BsPersonCircle className='text-6xl mx-auto'></BsPersonCircle>
                 <h1 className='text-5xl font-bold'>1000+</h1>

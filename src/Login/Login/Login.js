@@ -5,10 +5,12 @@ import SignInImg from '../../assets/images/Login/login.png';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { Helmet } from 'react-helmet';
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
-    const { signInUser, googleSignIn } = useContext(AuthContext);
+    const { signInUser, googleSignIn, passwordResetEmail } = useContext(AuthContext);
     const [loginError, setLoginError] = useState("");
+    const [userEmail, setUserEmail] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -45,6 +47,21 @@ const Login = () => {
                 console.error(err)
             })
     }
+    const handleEmailBlur = event => {
+        const email = event.target.value;
+        setUserEmail(email);
+    }
+    const handleResetPassword = () => {
+        passwordResetEmail(userEmail)
+            .then(result => {
+                setLoginError("");
+                toast.success("Password reset email send check your index or spam folder.")
+            })
+            .catch(err => {
+                setLoginError(err.message);
+                toast.error(err.message);
+            })
+    }
     return (
         <div className="hero my-20">
             <Helmet>
@@ -61,13 +78,16 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" name="email" placeholder="email" className="input input-bordered" required />
+                            <input type="text" onBlur={handleEmailBlur} name="email" placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                            <label className="label py-0">
+                                <span>Forget password?<button onClick={handleResetPassword} className="btn btn-link px-1">Please reset</button></span>
+                            </label>
                             {
                                 loginError && <p className='text-red-500'>{loginError}</p>
                             }

@@ -5,9 +5,10 @@ import img from '../../assets/images/Login/signup.png'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { Helmet } from 'react-helmet';
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const Register = () => {
-    const { createUser, googleSignIn, profileAdded } = useContext(AuthContext);
+    const { createUser, googleSignIn, profileAdded, verifyEmail } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState("")
     const navigate = useNavigate()
     const location = useLocation();
@@ -39,8 +40,10 @@ const Register = () => {
                     profileUpdate(name, photoURL)
                     form.reset();
                     navigate(from, { replace: true });
-                    console.log(user)
+                    console.log(user);
+                    verifyEmail();
                     setSignUpError("")
+                    toast.success("User created successful & Verify you email address.")
                 })
                 .catch(error => {
                     console.error(error);
